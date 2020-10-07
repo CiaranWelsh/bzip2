@@ -81,15 +81,15 @@ set_target_properties(libz2 PROPERTIES SOVERSION ${VERSION})
 set_target_properties(libz2 PROPERTIES VERSION ${MAJOR_VERSION})
 
 install(TARGETS libz2
-        EXPORT bzip2
-        PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}" COMPONENT Development
-        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT Runtime
-        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT Development
-        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT Development)
+        EXPORT BZip2
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT Development
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development)
 install(
-        EXPORT bzip2
-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
-        NAMESPACE bzip2::
+        EXPORT BZip2
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake
+        NAMESPACE BZip2::
         FILE bzip2-config.cmake
 )
 
@@ -128,15 +128,15 @@ if (BUILD_BZIP_EXEC)
 endif ()
 
 
-export(TARGETS libz2 NAMESPACE BZip2:: FILE bzip2.cmake)
-export(PACKAGE bzip2)
+#export(TARGETS libz2 NAMESPACE BZip2:: FILE bzip2.cmake)
+#export(PACKAGE bzip2)
+#
+#install(EXPORT bzip2 NAMESPACE BZip2::
+#        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
 
-install(EXPORT bzip2 NAMESPACE BZip2::
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
-
-install(FILES bzip2.1 bzgrep.1 bzmore.1 bzdiff.1
-        DESTINATION ${CMAKE_INSTALL_MANDIR}/man1
-        COMPONENT Runtime)
+#install(FILES bzip2.1 bzgrep.1 bzmore.1 bzdiff.1
+#        DESTINATION ${CMAKE_INSTALL_MANDIR}/man1
+#        COMPONENT Runtime)
 
 
 install(FILES LICENSE DESTINATION
