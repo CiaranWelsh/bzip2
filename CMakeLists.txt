@@ -82,13 +82,13 @@ set_target_properties(libz2 PROPERTIES VERSION ${MAJOR_VERSION})
 
 install(TARGETS libz2
         EXPORT bzip2
-        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT Development
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development)
+        PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}" COMPONENT Development
+        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT Runtime
+        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT Development
+        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT Development)
 install(
         EXPORT bzip2
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
         NAMESPACE bzip2::
         FILE bzip2-config.cmake
 )
@@ -98,24 +98,24 @@ if (BUILD_BZIP_EXEC)
     target_link_libraries(bzip2 PRIVATE BZip2::BZip2)
     install(TARGETS bzip2
             EXPORT bzip2-targets
-            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bzip2 COMPONENT Development
-            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
-            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
-            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development)
+            PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/bzip2" COMPONENT Development
+            RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT Runtime
+            LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT Development
+            ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT Development)
 
     configure_package_config_file(bzip2-config.cmake.in
-                                  ${CMAKE_CURRENT_BINARY_DIR}/bzip2-config.cmake
-                                  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+                                  "${CMAKE_CURRENT_BINARY_DIR}/bzip2-config.cmake"
+                                  INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake")
     write_basic_package_version_file(bzip2-config-version.cmake
                                      VERSION ${VERSION} COMPATIBILITY SameMajorVersion)
 
-    install(PROGRAMS $<TARGET_FILE:bzip2>
-            DESTINATION ${CMAKE_INSTALL_BINDIR}
+    install(PROGRAMS "$<TARGET_FILE:bzip2>"
+            DESTINATION "${CMAKE_INSTALL_BINDIR}"
             COMPONENT Runtime
             RENAME bunzip2${CMAKE_EXECUTABLE_SUFFIX}
             )
 
-    install(PROGRAMS $<TARGET_FILE:bzip2>
+    install(PROGRAMS "$<TARGET_FILE:bzip2>"
             DESTINATION ${CMAKE_INSTALL_BINDIR}
             COMPONENT Runtime
             RENAME bzcat${CMAKE_EXECUTABLE_SUFFIX}
