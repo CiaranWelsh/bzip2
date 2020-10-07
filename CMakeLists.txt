@@ -97,13 +97,8 @@ if (BUILD_BZIP_EXEC)
     add_executable(bzip2 bzip2.c )
     target_link_libraries(bzip2 PRIVATE BZip2::BZip2)
     install(TARGETS bzip2
-<<<<<<< HEAD
             EXPORT bzip2-targets
             PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bzip2 COMPONENT Development
-=======
-            EXPORT bzip2
-            PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT Development
->>>>>>> new
             RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
             LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
             ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development)
